@@ -28,16 +28,19 @@ function PageHeader() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const shouldCollapse = scrollY > 0; // Adjust the threshold as needed
-
-      setHeaderExpanded(!shouldCollapse);
+      const yourDiv = document.getElementById('MainBodyId'); // Replace 'yourDivId' with the actual ID of your div
+      const shouldCollapse = yourDiv.scrollTop > 0; 
+      if(shouldCollapse){
+        setHeaderExpanded(!shouldCollapse);
+      }
+      
     };
 
-    window.addEventListener('scroll', handleScroll);
+    const yourDiv = document.getElementById('MainBodyId'); // Replace 'yourDivId' with the actual ID of your div
+    yourDiv.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      yourDiv.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -204,7 +207,7 @@ function PageHeader() {
 
       </div>{' '}
 
-      <div className='mainBody'>
+      <div className='mainBody' id='MainBodyId'>
 
         <div className='bodyButtons'>
 
